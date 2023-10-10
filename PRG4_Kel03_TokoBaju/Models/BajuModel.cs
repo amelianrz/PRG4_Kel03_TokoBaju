@@ -3,9 +3,9 @@ using System.ComponentModel.DataAnnotations;
 
 namespace PRG4_Kel03_TokoBaju.Models
 {
-    public class BajuModel
+    public class BajuModel : Controller
     {
-        public string id { get; set; }
+        public int id { get; set; }
 
         [Required(ErrorMessage = "Nama Baju Wajib diisi.")]
         [MaxLength(50, ErrorMessage = "Nama Baju maksimal 50 Huruf")]
@@ -17,13 +17,13 @@ namespace PRG4_Kel03_TokoBaju.Models
 
         [Required(ErrorMessage = "Harga Wajib diisi.")]
         [RegularExpression("^[0-9]*$", ErrorMessage = "Harga hanya boleh berisi angka.")]
-        public double harga { get; set; }
+        public string harga { get; set; }
 
         [Required(ErrorMessage = "Ukuran Baju wajib diisi.")]
         public string ukuran { get; set; }
 
         [Required(ErrorMessage = "Stok Wajib diisi.")]
         [RegularExpression("^[0-9]*$", ErrorMessage = "Stok hanya boleh berisi angka.")]
-        public int stok { get; set; }
+        public string stok { get; set; }
     }
 }
