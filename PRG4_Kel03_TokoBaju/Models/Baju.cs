@@ -3,15 +3,10 @@ using System.Data.SqlClient;
 
 namespace PRG4_Kel03_TokoBaju.Models
 {
-    public class Baju : Controller
+    public class Baju
     {
         private readonly string _connectionString;
         private readonly SqlConnection _connection;
-        public IActionResult Index()
-        {
-            return View();
-        }
-
         public Baju(IConfiguration configuration)
         {
             _connectionString =
@@ -34,12 +29,12 @@ namespace PRG4_Kel03_TokoBaju.Models
                 {
                     BajuModel baju = new BajuModel
                     {
-                        id = Convert.ToInt32(reader["id"].ToString()),
+                        /*id = Convert.ToInt32(reader["id"].ToString()),
                         nama = reader["nama_baju"].ToString(),
                         idjenis = reader["id_jenis_baju"].ToString(),
                         harga = reader["harga"].ToString(),
                         ukuran = reader["ukuran"].ToString(),
-                        stok = reader["stock"].ToString(),
+                        stok = reader["stock"].ToString(),*/
                     };
                     bajumodel.Add(baju);
                 }
@@ -53,7 +48,7 @@ namespace PRG4_Kel03_TokoBaju.Models
             return bajumodel;
         }
 
-        public BajuModel getData(int id)
+        public BajuModel getData(string id)
         {
             BajuModel bajumodel = new BajuModel();
             try
@@ -65,12 +60,12 @@ namespace PRG4_Kel03_TokoBaju.Models
                 SqlDataReader reader = command.ExecuteReader();
                 if (reader.Read())
                 {
-                    bajumodel.id = Convert.ToInt32(reader["id"].ToString());
+                    /*bajumodel.id = Convert.ToInt32(reader["id"].ToString());
                     bajumodel.nama = reader["nama_baju"].ToString();
                     bajumodel.idjenis = reader["id_jenis_baju"].ToString();
                     bajumodel.harga = reader["harga"].ToString();
                     bajumodel.ukuran = reader["ukuran"].ToString();
-                    bajumodel.stok = reader["stock"].ToString();
+                    bajumodel.stok = reader["stock"].ToString();*/
                 }
                 reader.Close();
                 _connection.Close();
@@ -131,7 +126,7 @@ namespace PRG4_Kel03_TokoBaju.Models
                 Console.WriteLine(ex.Message);
             }
         }
-        public void deleteData(int id)
+        public void deleteData(string id)
         {
             try
             {

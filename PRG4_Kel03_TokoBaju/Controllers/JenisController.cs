@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using PRG4_Kel03_TokoBaju.Models;
-using PRG4_M4_P1_008.Models;
 
 namespace PRG4_Kel03_TokoBaju.Controllers
 {

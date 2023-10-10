@@ -1,7 +1,6 @@
-﻿using PRG4_Kel03_TokoBaju.Models;
-using System.Data.SqlClient;
+﻿using System.Data.SqlClient;
 
-namespace PRG4_M4_P1_008.Models
+namespace PRG4_Kel03_TokoBaju.Models
 {
     public class Jenis
     {
