@@ -81,5 +81,71 @@ namespace PRG4_Kel03_TokoBaju.Models
             }
             return bajumodel;
         }
+        public void insertData(BajuModel bajumodel)
+        {
+            try
+            {
+                string query = "insert into Anggota values(@p1,@p2,@p3,@p4,@p5)";
+                SqlCommand command = new SqlCommand(query, _connection);
+                command.Parameters.AddWithValue("@p1", bajumodel.nama);
+                command.Parameters.AddWithValue("@p2", bajumodel.idjenis);
+                command.Parameters.AddWithValue("@p3", bajumodel.harga);
+                command.Parameters.AddWithValue("@p4", bajumodel.ukuran);
+                command.Parameters.AddWithValue("@p5", bajumodel.stok);
+
+                _connection.Open();
+                command.ExecuteNonQuery();
+                _connection.Close();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
+
+        public void updateData(BajuModel bajumodel)
+        {
+            try
+            {
+                string query = "update Baju " +
+                    "set nama_baju = @p2" +
+                    ",id_jenis_baju = @p3" +
+                    ",harga = @p4" +
+                    ",ukuran = @p5" +
+                    ",stock = @p" +
+                    " where id = @p1";
+                using SqlCommand command = new SqlCommand(query, _connection);
+                command.Parameters.AddWithValue("@p1", bajumodel.id);
+                command.Parameters.AddWithValue("@p2", bajumodel.nama);
+                command.Parameters.AddWithValue("@p3", bajumodel.idjenis);
+                command.Parameters.AddWithValue("@p4", bajumodel.harga);
+                command.Parameters.AddWithValue("@p5", bajumodel.ukuran);
+                command.Parameters.AddWithValue("@p6", bajumodel.stok);
+
+                _connection.Open();
+                command.ExecuteNonQuery();
+                _connection.Close();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
+        public void deleteData(int id)
+        {
+            try
+            {
+                string query = "delete from Baju where id = @p1";
+                using SqlCommand command = new SqlCommand(query, _connection);
+                command.Parameters.AddWithValue("@p1", id);
+                _connection.Open();
+                command.ExecuteNonQuery();
+                _connection.Close();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
     }
 }
