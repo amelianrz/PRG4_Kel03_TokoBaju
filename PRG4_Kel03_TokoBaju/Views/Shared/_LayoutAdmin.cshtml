@@ -1,18 +1,4 @@
-﻿@*<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>@ViewBag.Title</title>
-</head>
-<body>
-    <div>
-        
-    </div>
-</body>
-</html>*@
-
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -29,13 +15,20 @@
     <link rel="stylesheet" href="~/Content/vendors/css/vendor.bundle.base.css">
     <!-- endinject -->
     <!-- Plugin css for this page -->
-    <link rel="stylesheet" href="~/Content/vendors/datatables.net-bs4/dataTables.bootstrap4.css">
     <link rel="stylesheet" href="~/Content/js/select.dataTables.min.css">
     <!-- End plugin css for this page -->
     <!-- inject:css -->
     <link rel="stylesheet" href="~/Content/css/vertical-layout-light/style.css">
     <!-- endinject -->
     <link rel="shortcut icon" href="~/Content/images/favicon.png" />
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <!-- Tambahkan jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- Tambahkan SweetAlert -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
 </head>
 <body>
     <div class="container-scroller">
@@ -162,7 +155,7 @@
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item preview-item">
                                 <div class="preview-thumbnail">
-                                    <img src="images/faces/face10.jpg" alt="image" class="img-sm profile-pic">
+                                    <img src="~/Content/images/faces/face10.jpg" alt="image" class="img-sm profile-pic">
                                 </div>
                                 <div class="preview-item-content flex-grow py-2">
                                     <p class="preview-subject ellipsis font-weight-medium text-dark">Marian Garner </p>
@@ -171,7 +164,7 @@
                             </a>
                             <a class="dropdown-item preview-item">
                                 <div class="preview-thumbnail">
-                                    <img src="images/faces/face12.jpg" alt="image" class="img-sm profile-pic">
+                                    <img src="~/Content/images/faces/face12.jpg" alt="image" class="img-sm profile-pic">
                                 </div>
                                 <div class="preview-item-content flex-grow py-2">
                                     <p class="preview-subject ellipsis font-weight-medium text-dark">David Grey </p>
@@ -180,7 +173,7 @@
                             </a>
                             <a class="dropdown-item preview-item">
                                 <div class="preview-thumbnail">
-                                    <img src="images/faces/face1.jpg" alt="image" class="img-sm profile-pic">
+                                    <img src="~/Content/images/faces/face1.jpg" alt="image" class="img-sm profile-pic">
                                 </div>
                                 <div class="preview-item-content flex-grow py-2">
                                     <p class="preview-subject ellipsis font-weight-medium text-dark">Travis Jenkins </p>
@@ -191,11 +184,11 @@
                     </li>
                     <li class="nav-item dropdown d-none d-lg-block user-dropdown">
                         <a class="nav-link" id="UserDropdown" href="#" data-bs-toggle="dropdown" aria-expanded="false">
-                            <img class="img-xs rounded-circle" src="images/faces/face8.jpg" alt="Profile image">
+                            <img class="img-xs rounded-circle" src="~/Content/images/faces/face8.jpg" alt="Profile image">
                         </a>
                         <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
                             <div class="dropdown-header text-center">
-                                <img class="img-md rounded-circle" src="images/faces/face8.jpg" alt="Profile image">
+                                <img class="img-md rounded-circle" src="~/Content/images/faces/face8.jpg" alt="Profile image">
                                 <p class="mb-1 mt-3 font-weight-semibold">Allen Moreno</p>
                                 <p class="fw-light text-muted mb-0">allenmoreno@gmail.com</p>
                             </div>
@@ -328,7 +321,7 @@
                         </div>
                         <ul class="chat-list">
                             <li class="list active">
-                                <div class="profile"><img src="images/faces/face1.jpg" alt="image"><span class="online"></span></div>
+                                <div class="profile"><img src="~/Content/images/faces/face1.jpg" alt="image"><span class="online"></span></div>
                                 <div class="info">
                                     <p>Thomas Douglas</p>
                                     <p>Available</p>
@@ -336,7 +329,7 @@
                                 <small class="text-muted my-auto">19 min</small>
                             </li>
                             <li class="list">
-                                <div class="profile"><img src="images/faces/face2.jpg" alt="image"><span class="offline"></span></div>
+                                <div class="profile"><img src="~/Content/images/faces/face2.jpg" alt="image"><span class="offline"></span></div>
                                 <div class="info">
                                     <div class="wrapper d-flex">
                                         <p>Catherine</p>
@@ -347,7 +340,7 @@
                                 <small class="text-muted my-auto">23 min</small>
                             </li>
                             <li class="list">
-                                <div class="profile"><img src="images/faces/face3.jpg" alt="image"><span class="online"></span></div>
+                                <div class="profile"><img src="~/Content/images/faces/face3.jpg" alt="image"><span class="online"></span></div>
                                 <div class="info">
                                     <p>Daniel Russell</p>
                                     <p>Available</p>
@@ -355,7 +348,7 @@
                                 <small class="text-muted my-auto">14 min</small>
                             </li>
                             <li class="list">
-                                <div class="profile"><img src="images/faces/face4.jpg" alt="image"><span class="offline"></span></div>
+                                <div class="profile"><img src="~/Content/images/faces/face4.jpg" alt="image"><span class="offline"></span></div>
                                 <div class="info">
                                     <p>James Richardson</p>
                                     <p>Away</p>
@@ -363,7 +356,7 @@
                                 <small class="text-muted my-auto">2 min</small>
                             </li>
                             <li class="list">
-                                <div class="profile"><img src="images/faces/face5.jpg" alt="image"><span class="online"></span></div>
+                                <div class="profile"><img src="~/Content/images/faces/face5.jpg" alt="image"><span class="online"></span></div>
                                 <div class="info">
                                     <p>Madeline Kennedy</p>
                                     <p>Available</p>
@@ -371,7 +364,7 @@
                                 <small class="text-muted my-auto">5 min</small>
                             </li>
                             <li class="list">
-                                <div class="profile"><img src="images/faces/face6.jpg" alt="image"><span class="online"></span></div>
+                                <div class="profile"><img src="~/Content/images/faces/face6.jpg" alt="image"><span class="online"></span></div>
                                 <div class="info">
                                     <p>Sarah Graves</p>
                                     <p>Available</p>
@@ -388,7 +381,7 @@
             <nav class="sidebar sidebar-offcanvas" id="sidebar">
                 <ul class="nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="index.html">
+                        <a class="nav-link" asp-controller="Home" asp-action="Index">
                             <i class="mdi mdi-grid-large menu-icon"></i>
                             <span class="menu-title">Dashboard</span>
                         </a>
@@ -397,24 +390,29 @@
                     <li class="nav-item">
                         <a class="nav-link" data-bs-toggle="collapse" href="#form-elements" aria-expanded="false" aria-controls="form-elements">
                             <i class="menu-icon mdi mdi-card-text-outline"></i>
-                            <span class="menu-title">Form elements</span>
+                            <span class="menu-title">Master</span>
                             <i class="menu-arrow"></i>
                         </a>
                         <div class="collapse" id="form-elements">
                             <ul class="nav flex-column sub-menu">
-                                <li class="nav-item"><a class="nav-link" href="basic_elements.html">Basic Elements</a></li>
+                                <li class="nav-item"><a class="nav-link" asp-controller="Baju" asp-action="Index">Baju</a></li>
+                            </ul>
+                        </div>
+                        <div class="collapse" id="form-elements">
+                            <ul class="nav flex-column sub-menu">
+                                <li class="nav-item"><a class="nav-link" asp-controller="Jenis" asp-action="Index">Jenis Baju</a></li>
                             </ul>
                         </div>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" data-bs-toggle="collapse" href="#tables" aria-expanded="false" aria-controls="tables">
                             <i class="menu-icon mdi mdi-table"></i>
-                            <span class="menu-title">Tables</span>
+                            <span class="menu-title">Transaksi</span>
                             <i class="menu-arrow"></i>
                         </a>
                         <div class="collapse" id="tables">
                             <ul class="nav flex-column sub-menu">
-                                <li class="nav-item"> <a class="nav-link" href="basic-table.html">Basic table</a></li>
+                                <li class="nav-item"> <a class="nav-link" asp-controller="Pembelian" asp-action="Index">Pembelian Baju</a></li>
                             </ul>
                         </div>
                     </li>
@@ -461,6 +459,13 @@
     <script src="~/Content/js/dashboard.js"></script>
     <script src="~/Content/js/Chart.roundedBarCharts.js"></script>
     <!-- End custom js for this page-->
+    <!-- Template Main JS File -->
+    <script src="~/assets/js/main.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
 </body>
 
 </html>
