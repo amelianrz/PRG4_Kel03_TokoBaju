@@ -10,7 +10,7 @@ namespace PRG4_Kel03_TokoBaju.Controllers
 
         public HomeController(ILogger<HomeController> logger)
         {
-            _logger = logger ;
+            _logger = logger woy;
         }
 
         public IActionResult Index()
