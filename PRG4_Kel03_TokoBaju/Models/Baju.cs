@@ -56,6 +56,30 @@ namespace PRG4_Kel03_TokoBaju.Models
         public BajuModel getData(int id)
         {
             BajuModel bajumodel = new BajuModel();
+            try
+            {
+                string query = "select * from Baju where id = @p1";
+                SqlCommand command = new SqlCommand(query, _connection);
+                command.Parameters.AddWithValue("@p1", id);
+                _connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+                if (reader.Read())
+                {
+                    bajumodel.id = Convert.ToInt32(reader["id"].ToString());
+                    bajumodel.nama = reader["nama_baju"].ToString();
+                    bajumodel.idjenis = reader["id_jenis_baju"].ToString();
+                    bajumodel.harga = reader["harga"].ToString();
+                    bajumodel.ukuran = reader["ukuran"].ToString();
+                    bajumodel.stok = reader["stock"].ToString();
+                }
+                reader.Close();
+                _connection.Close();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            return bajumodel;
         }
     }
 }
