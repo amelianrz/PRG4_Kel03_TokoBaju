@@ -402,9 +402,12 @@
                         </a>
                         <div class="collapse" id="form-elements">
                             <ul class="nav flex-column sub-menu">
-                                <li class="nav-item"><a class="nav-link" href="@Url.Action("Baju", "Create.cshtml")">Kelola Baju</a></li>
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-controller="Baju" asp-action="Create">Kelola Baju</a>
+                                </li>
                             </ul>
                         </div>
+
 
                     </li>
                     <li class="nav-item">
