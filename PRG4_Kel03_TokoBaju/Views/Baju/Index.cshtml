@@ -122,7 +122,7 @@
             }).then((result) => {
                 if (result.isConfirmed) {
                     $.ajax({
-                        url: "/Jenis/Delete/" + bukuId,
+                        url: "/Baju/Delete/" + bukuId,
                         type: "POST",
                         success: function (data) {
                             if (data.success) {

@@ -78,6 +78,10 @@ namespace PRG4_Kel03_TokoBaju.Controllers
                 }
 
                 newBukuModel.nama = bajumodel.nama;
+                newBukuModel.idjenis = bajumodel.idjenis;
+                newBukuModel.harga = bajumodel.harga;
+                newBukuModel.ukuran = bajumodel.ukuran;
+                newBukuModel.stok = bajumodel.stok;
                 _bukuRepository.updateData(newBukuModel);
                 TempData["SuccessMessage"] = "Baju berhasil diupdate";
                 return RedirectToAction("Index");
