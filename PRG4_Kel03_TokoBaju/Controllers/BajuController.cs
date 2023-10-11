@@ -22,30 +22,30 @@ namespace PRG4_Kel03_TokoBaju.Controllers
             return View();
         }
         [HttpPost]
-        public IActionResult Create(BajuModel bukuModel)
+        public IActionResult Create(BajuModel bajumodel)
         {
             if (ModelState.IsValid)
             {
-                _bukuRepository.insertData(bukuModel);
+                _bukuRepository.insertData(bajumodel);
                 TempData["SuccesMessage"] = "Data berhasil ditambahkan";
                 return RedirectToAction("Index");
             }
-            return View(bukuModel);
+            return View(bajumodel);
         }
         [HttpPost]
         public IActionResult Delete(string id)
         {
-            var response = new { success = false, message = "Gagal menghapus BukuModel." };
+            var response = new { success = false, message = "Gagal menghapus Baju." };
             try
             {
                 if (id != null)
                 {
                     _bukuRepository.deleteData(id);
-                    response = new { success = true, message = "BukuModel berhasil dihapus." };
+                    response = new { success = true, message = "Baju berhasil dihapus." };
                 }
                 else
                 {
-                    response = new { success = false, message = "BukuModel tidak ditemukan." };
+                    response = new { success = false, message = "Baju tidak ditemukan." };
                 }
             }
             catch (Exception ex)
@@ -66,23 +66,23 @@ namespace PRG4_Kel03_TokoBaju.Controllers
             return View(bukuModel);
         }
         [HttpPost]
-        public IActionResult Edit(BajuModel bukuModel)
+        public IActionResult Edit(BajuModel bajumodel)
         {
             if (ModelState.IsValid)
             {
-                BajuModel newBukuModel = _bukuRepository.getData(bukuModel.id);
+                BajuModel newBukuModel = _bukuRepository.getData(bajumodel.id);
 
                 if (newBukuModel == null)
                 {
                     return NotFound();
                 }
 
-                newBukuModel.nama = bukuModel.nama;
+                newBukuModel.nama = bajumodel.nama;
                 _bukuRepository.updateData(newBukuModel);
-                TempData["SuccessMessage"] = "BukuModel berhasil diupdate";
+                TempData["SuccessMessage"] = "Baju berhasil diupdate";
                 return RedirectToAction("Index");
             }
-            return View(bukuModel);
+            return View(bajumodel);
         }
     }
 }

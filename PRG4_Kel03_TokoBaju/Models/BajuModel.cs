@@ -5,6 +5,7 @@ namespace PRG4_Kel03_TokoBaju.Models
 {
     public class BajuModel
     {
+        [Required(ErrorMessage = "ID Baju Harus diisi")]
         public string id { get; set; }
 
         [Required(ErrorMessage = "Nama Baju Wajib diisi.")]
