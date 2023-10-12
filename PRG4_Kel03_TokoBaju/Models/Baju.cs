@@ -16,6 +16,34 @@ namespace PRG4_Kel03_TokoBaju.Models
             _connection = new SqlConnection(_connectionString);
         }
 
+        public List<JenisModel> getAllDataJenis()
+        {
+            List<JenisModel> JenisList = new List<JenisModel>();
+            try
+            {
+                string query = "select id_jenis_baju, nama_jenis_baju from JenisBaju";
+                SqlCommand command = new SqlCommand(query, _connection);
+                _connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    JenisModel jenis = new JenisModel
+                    {
+                        id = reader["id_jenis_baju"].ToString(),
+                        nama = reader["nama_jenis_baju"].ToString()
+                    };
+                    JenisList.Add(jenis);
+                }
+                reader.Close();
+                _connection.Close();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            return JenisList;
+        }
+
         public List<BajuModel> getAllData()
         {
             List<BajuModel> BajuList = new List<BajuModel>();

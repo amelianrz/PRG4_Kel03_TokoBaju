@@ -5,28 +5,30 @@ namespace PRG4_Kel03_TokoBaju.Controllers
 {
     public class BajuController : Controller
     {
-        private readonly Baju _bukuRepository;
+        private readonly Baju _bajuRepository;
 
         public BajuController(IConfiguration configuration)
         {
-            _bukuRepository = new Baju(configuration);
+            _bajuRepository = new Baju(configuration);
         }
         public IActionResult Index()
         {
-            return View(_bukuRepository.getAllData());
+            return View(_bajuRepository.getAllData());
         }
 
         [HttpGet]
         public IActionResult Create()
         {
+            ViewBag.jenislist = _bajuRepository.getAllDataJenis();
             return View();
         }
+
         [HttpPost]
         public IActionResult Create(BajuModel bajumodel)
         {
             if (ModelState.IsValid)
             {
-                _bukuRepository.insertData(bajumodel);
+                _bajuRepository.insertData(bajumodel);
                 TempData["SuccesMessage"] = "Data berhasil ditambahkan";
                 return RedirectToAction("Index");
             }
@@ -40,7 +42,7 @@ namespace PRG4_Kel03_TokoBaju.Controllers
             {
                 if (id != null)
                 {
-                    _bukuRepository.deleteData(id);
+                    _bajuRepository.deleteData(id);
                     response = new { success = true, message = "Baju berhasil dihapus." };
                 }
                 else
@@ -57,7 +59,7 @@ namespace PRG4_Kel03_TokoBaju.Controllers
         [HttpGet]
         public IActionResult Edit(string id)
         {
-            BajuModel bukuModel = _bukuRepository.getData(id);
+            BajuModel bukuModel = _bajuRepository.getData(id);
 
             if (bukuModel == null)
             {
@@ -70,7 +72,7 @@ namespace PRG4_Kel03_TokoBaju.Controllers
         {
             if (ModelState.IsValid)
             {
-                BajuModel newBukuModel = _bukuRepository.getData(bajumodel.id);
+                BajuModel newBukuModel = _bajuRepository.getData(bajumodel.id);
 
                 if (newBukuModel == null)
                 {
@@ -82,7 +84,7 @@ namespace PRG4_Kel03_TokoBaju.Controllers
                 newBukuModel.harga = bajumodel.harga;
                 newBukuModel.ukuran = bajumodel.ukuran;
                 newBukuModel.stok = bajumodel.stok;
-                _bukuRepository.updateData(newBukuModel);
+                _bajuRepository.updateData(newBukuModel);
                 TempData["SuccessMessage"] = "Baju berhasil diupdate";
                 return RedirectToAction("Index");
             }

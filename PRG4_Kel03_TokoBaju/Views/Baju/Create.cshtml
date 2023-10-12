@@ -24,8 +24,14 @@
                                 <span asp-validation-for="nama" class="text-danger"></span>
                             </div>
                             <div class="form-group">
-                                <label asp-for="idjenis" class="control-label">ID Jenis</label>
-                                <input asp-for="idjenis" class="form-control" />
+                                <label asp-for="idjenis" class="control-label">Jenis Baju</label>
+                                <select asp-for="idjenis" class="form-control">
+                                    <option value="">Pilih Jenis Baju</option>
+                                    @foreach (var jenis in ViewBag.jenislist)
+                                    {
+                                        <option value="@jenis.id">@jenis.nama</option>
+                                    }
+                                </select>
                                 <span asp-validation-for="idjenis" class="text-danger"></span>
                             </div>
                             <div class="form-group">
