@@ -1,0 +1,94 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model PRG4_Kel03_TokoBaju.Models.PembelianModel
+@{
+    ViewData["Title"] = "Transaksi Pembelian";
+}
+
+<div class="Content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title">Tambah Transaksi</h4>
+                    </div>
+                    <div class="card-body">
+                        <form method="post">
+                            <div class="form-group">
+                                <label asp-for="id_trs" class="control-label">ID Transaksi</label>
+                                <input asp-for="id_trs" class="form-control" />
+                                <span asp-validation-for="id_trs" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="id" class="control-label">Nama Baju</label>
+                                <select asp-for="id" class="form-control">
+                                    <option value="">Pilih Baju</option>
+                                    @foreach (var baju in ViewBag.pembelianList)
+                                    {
+                                        <option value="@baju.id">@baju.nama</option>
+                                    }
+                                </select>
+                                <span asp-validation-for="id" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label>Harga</label>
+                                <ul>
+                                    @foreach (var baju in ViewBag.pembelianList)
+                                    {
+                                        <li>@baju.harga</li>
+                                    }
+                                </ul>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="jumlah" class="control-label">Jumlah</label>
+                                <input asp-for="jumlah" class="form-control" />
+                                <span asp-validation-for="jumlah" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="tanggal" class="control-label">Tanggal</label>
+                                <input asp-for="tanggal" class="form-control" />
+                                <span asp-validation-for="tanggal" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="total" class="control-label">Total</label>
+                                <input asp-for="total" class="form-control" />
+                                <span asp-validation-for="total" class="text-danger"></span>
+                            </div>
+                            <br />
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-primary">Simpan</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Fungsi untuk mengisi otomatis harga
+    function updateHarga() {
+        var selectedOption = $("#bajuDropdown option:selected");
+        var hargaBaju = selectedOption.data("harga");
+
+        if (hargaBaju) {
+            $("#hargaBaju").text(hargaBaju); // Update the price in the span element.
+        } else {
+            $("#hargaBaju").text(''); // Clear the price if no price is available.
+        }
+    }
+
+    // Panggil fungsi saat opsi dipilih atau halaman dimuat
+    $(document).ready(function () {
+        // Panggil fungsi saat halaman dimuat
+        updateHarga();
+
+        // Panggil fungsi saat opsi dipilih in the dropdown changes
+        $("#bajuDropdown").on("change", function () {
+            updateHarga();
+        });
+    });
+</script>

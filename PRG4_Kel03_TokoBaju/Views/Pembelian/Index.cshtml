@@ -1,0 +1,89 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model List<PRG4_Kel03_TokoBaju.Models.PembelianModel>
+@{
+    ViewData["Title"] = "Transaksi Pembelian";
+}
+
+<section class="section">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Transaksi Pembelian</h5>
+                    <hr />
+                    @if (TempData["SuccessMessage"] != null)
+                    {
+                        <div class="row">
+                            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                <i class="bi bi-check-circle me-1"></i>
+                                <strong>Sukses!</strong> @TempData["SuccessMessage"]
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" arial-label="Close"></button>
+
+                            </div>
+                        </div>
+                    }
+
+                    <a class="btn btn-primary" asp-action="Create">Tambah Transaksi</a>
+                    <!-- Table with stripped rows -->
+                    <table class="table datatable">
+                        <thead>
+                            <tr>
+                                <th scope="col">ID Transaksi</th>
+                                <th scope="col">Nama Baju</th>
+                                <th scope="col">Jumlah</th>
+                                <th scope="col">Tanggal</th>
+                                <th scope="col">Total</th>
+                                <th scope="col">Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var pbl in Model)
+                            {
+                                <tr>
+                                    <td>@pbl.id_trs</td>
+                                    <td>@pbl.id</td>
+                                    <td>@pbl.jumlah</td>
+                                    <td>@pbl.tanggal</td>
+                                    <td>@pbl.total</td>
+                                    <td>
+                                        <button class="btn btn-sm btn-info btn-info-modal" data-toggle="modal" data-target="#infoModal_@pbl.id_trs">
+                                            <i class="fas fa-info-circle"></i>
+                                        </button>
+
+                                        <div class="modal fade" id="infoModal_@pbl.id_trs" tabindex="-1" role="dialog" aria-labelledby="infoModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-centered">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title">Informasi Pembelian</h5>
+                                                        <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close">
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <strong>Id:</strong> @pbl.id_trs<br />
+                                                        <strong>Nama:</strong> @pbl.id<br />
+                                                        <strong>Umur:</strong> @pbl.jumlah<br />
+                                                        <strong>Alamat:</strong> @pbl.tanggal<br />
+                                                        <strong>No. Telepon:</strong> @pbl.total<br />
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                    <!-- End Table with stripped rows-->
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</section>
